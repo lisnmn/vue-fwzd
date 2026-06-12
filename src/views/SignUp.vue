@@ -1,5 +1,5 @@
 <template>
-  <body class="signup-background">
+  <div class="signup-background">
   <el-container>
 	<el-header style="padding: 0">
 	  <LoginHeader></LoginHeader>
@@ -31,11 +31,11 @@
 	  </el-card>
 	</el-main>
   </el-container>
-  </body>
+  </div>
 </template>
 
 <script>
-    import LoginHeader from "../components/LoginHeader";
+    import LoginHeader from "../components/LoginHeader.vue";
 
     export default {
         data() {
@@ -117,7 +117,7 @@
 <style>
   .signup-background {
 	margin: 0px;
-	background: url("../../public/image/homepage/homepage.jpg") no-repeat center;
+	background: url("../assets/homepage.jpg") no-repeat center;
 	height: 100%;
 	width: 100%;
 	background-size: cover;

@@ -1,5 +1,5 @@
 <template>
-	<body class="myBook-background">
+	<div class="myBook-background">
 	<el-container>
 		<el-header style="padding: 0">
 			<HomePageHeader></HomePageHeader>
@@ -55,16 +55,20 @@
 			</el-card>
 		</el-main>
 	</el-container>
-	</body>
+	</div>
 </template>
 
 <script>
-    import HomePageHeader from "../components/HomePageHeader";
+    import HomePageHeader from "../components/HomePageHeader.vue";
+    import {useAppStore} from "../store";
 
     export default {
         name: "MyBook",
         components: {
             HomePageHeader
+        },
+        setup() {
+            return {store: useAppStore()}
         },
         data() {
             return {
@@ -91,7 +95,7 @@
                                         message: '修改成功！',
                                         showClose: true,
                                         onClose: () => {
-                                            this.$store.dispatch('setBook', this.book)
+                                            this.store.setBook(this.book)
                                             window.location.reload()
                                         }
                                     })
@@ -112,7 +116,7 @@
 
             },
             getParams() {
-                this.book = this.$store.getters.getBook
+                this.book = this.store.book
             },
             getBookImageList() {
                 axios.get('/book/imageList', {
@@ -126,8 +130,8 @@
                 })
             },
             imageView(index) {
-                this.$store.dispatch('setImageList', this.imageList)
-                this.$store.dispatch('setImageIndex', index)
+                this.store.setImageList(this.imageList)
+                this.store.setImageIndex(index)
                 this.$router.push('/imageView')
             }
         },
@@ -140,7 +144,7 @@
 
 <style>
 	.myBook-background {
-		background: url("../../public/image/homepage/homepage.jpg") no-repeat center;
+		background: url("../assets/homepage.jpg") no-repeat center;
 		height: 100%;
 		width: 100%;
 		background-size: cover;

@@ -1,48 +1,24 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import { defineStore } from 'pinia'
 
-Vue.use(Vuex)
-
-export default new Vuex.Store({
-    state: {
+export const useAppStore = defineStore('app', {
+    state: () => ({
         isLogin: false,
         book: '',
         imageList: [],
         imageIndex: 0
-    },
-    getters: {
-        isLogin: state => state.isLogin,
-        getBook: state => state.book,
-        getImageList: state => state.imageList,
-        getImageIndex: state => state.imageIndex
-    },
-    mutations: {
-        userStatus(state, flag) {
-            state.isLogin = flag
-        },
-        mutateBook(state, book) {
-            state.book = book
-        },
-        mutateImageList(state, imageList) {
-            state.imageList = imageList
-        },
-        mutateImageIndex(state, imageIndex) {
-            state.imageIndex = imageIndex
-        }
-    },
+    }),
     actions: {
-        setUser({commit}, flag) {
-            commit('userStatus', flag)
+        setUser(flag) {
+            this.isLogin = flag
         },
-        setBook(context, book) {
-            context.commit('mutateBook', book)
+        setBook(book) {
+            this.book = book
         },
-        setImageList(context, imageList) {
-            context.commit('mutateImageList', imageList)
+        setImageList(imageList) {
+            this.imageList = imageList
         },
-        setImageIndex(context, imageIndex) {
-            context.commit('mutateImageIndex', imageIndex)
+        setImageIndex(imageIndex) {
+            this.imageIndex = imageIndex
         }
-    },
-    modules: {}
+    }
 })

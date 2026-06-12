@@ -1,0 +1,89 @@
+[     627ms] [WARNING] [Vue warn]: Missing required prop: "index" 
+  at <ElMenuItem> 
+  at <ElMenu mode="horizontal" background-color="#303133" text-color="#C0C4CC"  ... > 
+  at <LoginHeader> 
+  at <ElHeader style= {padding: 0} > 
+  at <ElContainer> 
+  at <Login onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< undefined > > 
+  at <RouterView> 
+  at <App> @ http://localhost:11454/node_modules/.vite/deps/chunk-SLTFDGPG.js?v=0433f8a1:2225
+[     636ms] [WARNING] [Vue warn]: Missing required prop: "index" 
+  at <ElMenuItem> 
+  at <ElMenu mode="horizontal" background-color="#303133" text-color="#C0C4CC"  ... > 
+  at <LoginHeader> 
+  at <ElHeader style= {padding: 0} > 
+  at <ElContainer> 
+  at <Login onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< Proxy(Object) > > 
+  at <RouterView> 
+  at <App> @ http://localhost:11454/node_modules/.vite/deps/chunk-SLTFDGPG.js?v=0433f8a1:2225
+[  216359ms] [WARNING] [Vue warn]: Missing required prop: "index" 
+  at <ElMenuItem style= {float: right} onClick=fn<bound logout> > 
+  at <ElMenu mode="horizontal" background-color="#303133" text-color="#C0C4CC"  ... > 
+  at <HomePageHeader> 
+  at <ElHeader style= {padding: 0} > 
+  at <ElContainer> 
+  at <HomePage onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< null > > 
+  at <RouterView> 
+  at <App> @ http://localhost:11454/node_modules/.vite/deps/chunk-SLTFDGPG.js?v=0433f8a1:2225
+[  216373ms] [WARNING] [Vue warn]: Missing required prop: "index" 
+  at <ElMenuItem style= {float: right} onClick=fn<bound logout> > 
+  at <ElMenu mode="horizontal" background-color="#303133" text-color="#C0C4CC"  ... > 
+  at <HomePageHeader> 
+  at <ElHeader style= {padding: 0} > 
+  at <ElContainer> 
+  at <HomePage onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< Proxy(Object) > > 
+  at <RouterView> 
+  at <App> @ http://localhost:11454/node_modules/.vite/deps/chunk-SLTFDGPG.js?v=0433f8a1:2225
+[  299363ms] [WARNING] [Vue warn]: Missing required prop: "index" 
+  at <ElMenuItem> 
+  at <ElMenu mode="horizontal" background-color="#303133" text-color="#C0C4CC"  ... > 
+  at <LoginHeader> 
+  at <ElHeader style= {padding: 0} > 
+  at <ElContainer> 
+  at <SignUp onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< null > > 
+  at <RouterView> 
+  at <App> @ http://localhost:11454/node_modules/.vite/deps/chunk-SLTFDGPG.js?v=0433f8a1:2225
+[  299367ms] [WARNING] [Vue warn]: Missing required prop: "index" 
+  at <ElMenuItem> 
+  at <ElMenu mode="horizontal" background-color="#303133" text-color="#C0C4CC"  ... > 
+  at <LoginHeader> 
+  at <ElHeader style= {padding: 0} > 
+  at <ElContainer> 
+  at <SignUp onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< Proxy(Object) > > 
+  at <RouterView> 
+  at <App> @ http://localhost:11454/node_modules/.vite/deps/chunk-SLTFDGPG.js?v=0433f8a1:2225
+[  317030ms] [WARNING] [Vue warn]: Missing required prop: "index" 
+  at <ElMenuItem style= {float: right} onClick=fn<bound logout> > 
+  at <ElMenu mode="horizontal" background-color="#303133" text-color="#C0C4CC"  ... > 
+  at <HomePageHeader> 
+  at <ElHeader style= {padding: 0} > 
+  at <ElContainer> 
+  at <UserInfo onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< null > > 
+  at <RouterView> 
+  at <App> @ http://localhost:11454/node_modules/.vite/deps/chunk-SLTFDGPG.js?v=0433f8a1:2225
+[  317037ms] [WARNING] [Vue warn]: Missing required prop: "index" 
+  at <ElMenuItem style= {float: right} onClick=fn<bound logout> > 
+  at <ElMenu mode="horizontal" background-color="#303133" text-color="#C0C4CC"  ... > 
+  at <HomePageHeader> 
+  at <ElHeader style= {padding: 0} > 
+  at <ElContainer> 
+  at <UserInfo onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< Proxy(Object) > > 
+  at <RouterView> 
+  at <App> @ http://localhost:11454/node_modules/.vite/deps/chunk-SLTFDGPG.js?v=0433f8a1:2225
+[  318039ms] [WARNING] [Vue warn]: Missing required prop: "index" 
+  at <ElMenuItem style= {float: right} onClick=fn<bound logout> > 
+  at <ElMenu mode="horizontal" background-color="#303133" text-color="#C0C4CC"  ... > 
+  at <HomePageHeader> 
+  at <ElHeader style= {padding: 0} > 
+  at <ElContainer> 
+  at <UploadBook onVnodeUnmounted=fn<onVnodeUnmounted> ref=Ref< null > > 
+  at <RouterView> 
+  at <App> @ http://localhost:11454/node_modules/.vite/deps/chunk-SLTFDGPG.js?v=0433f8a1:2225
+[  318054ms] [WARNING] Missing required prop: "index" Proxy(Object) at <ElMenuItem>
+at <ElMenu>
+at <HomePageHeader>
+at <ElHeader>
+at <ElContainer>
+at <UploadBook>
+at <RouterView>
+at <App> [Object, Object, Object, Object, Object, Object, Object, Object] @ http://localhost:11454/node_modules/.vite/deps/element-plus.js?v=0433f8a1:25527

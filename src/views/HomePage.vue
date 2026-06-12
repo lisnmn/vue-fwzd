@@ -1,5 +1,5 @@
 <template>
-	<body class="homepage-background">
+	<div class="homepage-background">
 	<el-container>
 		<el-header style="padding: 0">
 			<HomePageHeader></HomePageHeader>
@@ -10,14 +10,14 @@
 				<el-row>
 					<div style="margin-bottom: 30px;display: flex;justify-content: center;align-items: center">
 						<el-input
-								@keyup.enter.native="searchClick"
+								@keyup.enter="searchClick"
 								placeholder="搜索..."
-								prefix-icon="el-icon-search"
+								prefix-icon="Search"
 								size="small"
 								style="width: 400px;margin-right: 10px"
 								v-model="keywords">
 						</el-input>
-						<el-button size="small" type="primary" icon="el-icon-search" @click="searchClick">搜索
+						<el-button size="small" type="primary" icon="Search" @click="searchClick">搜索
 						</el-button>
 					</div>
 					<div style="display: flex; justify-content: center;">
@@ -25,10 +25,12 @@
 							<div v-for="(item, index) in bookList.slice((currentPage-1)*pagesize,currentPage*pagesize)"
 							     :key="item.id">
 								<el-tooltip effect="dark" placement="bottom">
-									<p slot="content" class="homepage-image-card-info">图片集名：{{item.name}}</p>
-									<p slot="content" class="homepage-image-card-info">上传者：{{item.uploader}}</p>
-									<p slot="content" class="homepage-image-card-info">上传时间：{{item.uploadTime}}</p>
-									<p slot="content" class="homepage-image-card-info">类型：{{item.rank}}</p>
+									<template #content>
+										<p class="homepage-image-card-info">图片集名：{{item.name}}</p>
+										<p class="homepage-image-card-info">上传者：{{item.uploader}}</p>
+										<p class="homepage-image-card-info">上传时间：{{item.uploadTime}}</p>
+										<p class="homepage-image-card-info">类型：{{item.rank}}</p>
+									</template>
 									<el-card class="homepage-image-card" bodyStyle="padding:0px" shadow="hover">
 										<img class="homepage-image"
 										     :src="axios.defaults.baseURL + '/book/upload/'+ item.cover"
@@ -50,16 +52,20 @@
 			</el-card>
 		</el-main>
 	</el-container>
-	</body>
+	</div>
 </template>
 
 <script>
-    import HomePageHeader from "../components/HomePageHeader";
+    import HomePageHeader from "../components/HomePageHeader.vue";
+    import {useAppStore} from "../store";
 
     export default {
         name: "HomePage",
         components: {
             HomePageHeader
+        },
+        setup() {
+            return {store: useAppStore()}
         },
         data() {
             return {
@@ -89,7 +95,7 @@
 
             },
             moreInfo(index) {
-                this.$store.dispatch('setBook', this.bookList[index])
+                this.store.setBook(this.bookList[index])
                 this.$router.push('/bookInfo')
             }
         }
@@ -98,7 +104,7 @@
 
 <style>
 	.homepage-background {
-		background: url("../../public/image/homepage/kyouko.jpg") no-repeat center;
+		background: url("../assets/kyouko.jpg") no-repeat center;
 		height: 100%;
 		width: 100%;
 		background-size: cover;

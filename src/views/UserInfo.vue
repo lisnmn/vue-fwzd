@@ -1,5 +1,5 @@
 <template>
-  <body class="userInfo-background">
+  <div class="userInfo-background">
   <el-container>
     <el-header style="padding: 0">
       <HomePageHeader></HomePageHeader>
@@ -27,11 +27,11 @@
       </el-card>
     </el-main>
   </el-container>
-  </body>
+  </div>
 </template>
 
 <script>
-    import HomePageHeader from "../components/HomePageHeader";
+    import HomePageHeader from "../components/HomePageHeader.vue";
 
     export default {
         name: "UserInfo",
@@ -115,7 +115,7 @@
 
 <style>
   .userInfo-background {
-    background: url("../../public/image/homepage/kyouko.jpg") no-repeat center;
+    background: url("../assets/kyouko.jpg") no-repeat center;
     height: 100%;
     width: 100%;
     background-size: cover;

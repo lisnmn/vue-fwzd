@@ -1,5 +1,5 @@
 <template>
-  <body class="bookInfo-background">
+  <div class="bookInfo-background">
   <el-container>
 	<el-header style="padding: 0">
 	  <HomePageHeader></HomePageHeader>
@@ -50,16 +50,20 @@
 	  </el-card>
 	</el-main>
   </el-container>
-  </body>
+  </div>
 </template>
 
 <script>
-    import HomePageHeader from "../components/HomePageHeader";
+    import HomePageHeader from "../components/HomePageHeader.vue";
+    import {useAppStore} from "../store";
 
     export default {
         name: "BookInfo",
         components: {
             HomePageHeader
+        },
+        setup() {
+            return {store: useAppStore()}
         },
         data() {
             return {
@@ -69,7 +73,7 @@
         },
         methods: {
             getParams: function () {
-                this.book = this.$store.getters.getBook
+                this.book = this.store.book
             },
             getBookImageList: function () {
                 axios.get('/book/imageList', {
@@ -83,8 +87,8 @@
                 })
             },
             imageView: function (index) {
-                this.$store.dispatch('setImageList', this.imageList)
-                this.$store.dispatch('setImageIndex', index)
+                this.store.setImageList(this.imageList)
+                this.store.setImageIndex(index)
                 this.$router.push('/imageView')
             }
         },
@@ -97,7 +101,7 @@
 
 <style>
   .bookInfo-background {
-	background: url("../../public/image/homepage/kyouko.jpg") no-repeat center;
+	background: url("../assets/kyouko.jpg") no-repeat center;
 	height: 100%;
 	width: 100%;
 	background-size: cover;

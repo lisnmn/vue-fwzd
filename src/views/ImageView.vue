@@ -1,5 +1,5 @@
 <template>
-  <body class="imageView-background">
+  <div class="imageView-background">
   <el-container>
 	<el-header style="padding: 0">
 	  <HomePageHeader></HomePageHeader>
@@ -24,16 +24,20 @@
 	  </el-row>
 	</el-main>
   </el-container>
-  </body>
+  </div>
 </template>
 
 <script>
-    import HomePageHeader from "../components/HomePageHeader";
+    import HomePageHeader from "../components/HomePageHeader.vue";
+    import {useAppStore} from "../store";
 
     export default {
         name: "ImageView",
         components: {
             HomePageHeader
+        },
+        setup() {
+            return {store: useAppStore()}
         },
         data() {
             return {
@@ -44,8 +48,8 @@
         },
         methods: {
             getParams: function () {
-                this.imageList = this.$store.getters.getImageList
-                this.currentPage = this.$store.getters.getImageIndex + 1
+                this.imageList = this.store.imageList
+                this.currentPage = this.store.imageIndex + 1
             },
             handleCurrentChange: function (currentPage) {
                 this.currentPage = currentPage

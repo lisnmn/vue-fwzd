@@ -1,5 +1,5 @@
 <template>
-  <body class="uploadBook-background">
+  <div class="uploadBook-background">
   <el-container>
 	<el-header style="padding: 0">
 	  <HomePageHeader></HomePageHeader>
@@ -30,22 +30,26 @@
 						 :multiple="true"
 						 :auto-upload="false"
 						 style="text-align: left">
-				<i slot="default" class="el-icon-plus"></i>
-				<div slot="file" slot-scope="{file}">
-				  <img class="el-upload-list__item-thumbnail" :src="file.url">
-				  <span class="el-upload-list__item-actions">
-					<span class="el-upload-list__item-preview"
-						  @click="previewImage(file)">
-					  <i class="el-icon-zoom-in"></i>
+				<template #default>
+				  <el-icon><Plus/></el-icon>
+				</template>
+				<template #file="{ file }">
+				  <div>
+					<img class="el-upload-list__item-thumbnail" :src="file.url">
+					<span class="el-upload-list__item-actions">
+					  <span class="el-upload-list__item-preview"
+							@click="previewImage(file)">
+						<el-icon><ZoomIn/></el-icon>
+					  </span>
+					  <span class="el-upload-list__item-delete"
+							@click="removeImageFile(file)">
+						<el-icon><Delete/></el-icon>
+					  </span>
 					</span>
-					<span class="el-upload-list__item-delete"
-						  @click="removeImageFile(file)">
-					  <i class="el-icon-delete"></i>
-					</span>
-				  </span>
-				</div>
+				  </div>
+				</template>
 			  </el-upload>
-			  <el-dialog :visible.sync="previewDialogVisible"
+			  <el-dialog v-model="previewDialogVisible"
 						 :modal-append-to-body=false>
 				<img width="100%" :src="previewImageUrl" alt="">
 			  </el-dialog>
@@ -58,11 +62,11 @@
 	  </el-row>
 	</el-main>
   </el-container>
-  </body>
+  </div>
 </template>
 
 <script>
-    import HomePageHeader from "../components/HomePageHeader";
+    import HomePageHeader from "../components/HomePageHeader.vue";
 
     export default {
         name: "UploadBook",
@@ -160,7 +164,7 @@
 
 <style>
   .uploadBook-background {
-	background: url("../../public/image/homepage/kyouko.jpg") no-repeat center;
+	background: url("../assets/kyouko.jpg") no-repeat center;
 	height: 100%;
 	width: 100%;
 	background-size: cover;

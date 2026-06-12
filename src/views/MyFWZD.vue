@@ -1,5 +1,5 @@
 <template>
-	<body class="myFWZD-background">
+	<div class="myFWZD-background">
 	<el-container>
 		<el-header style="padding: 0">
 			<HomePageHeader></HomePageHeader>
@@ -13,14 +13,16 @@
 							<div v-for="(item, index) in bookList.slice((currentPage-1)*pagesize,currentPage*pagesize)"
 							     :key="item.id">
 								<el-tooltip effect="dark" placement="bottom">
-									<p slot="content" class="myFWZD-image-card-info">图片集名：{{item.name}}</p>
-									<p slot="content" class="myFWZD-image-card-info">上传时间：{{item.uploadTime}}</p>
-									<p slot="content" class="myFWZD-image-card-info">类型：{{item.rank}}</p>
+									<template #content>
+										<p class="myFWZD-image-card-info">图片集名：{{item.name}}</p>
+										<p class="myFWZD-image-card-info">上传时间：{{item.uploadTime}}</p>
+										<p class="myFWZD-image-card-info">类型：{{item.rank}}</p>
+									</template>
 									<el-card class="myFWZD-image-card" bodyStyle="padding:0px" shadow="hover">
 										<el-button-group style="position: absolute;">
-											<el-button type="primary" icon="el-icon-edit" circle
+											<el-button type="primary" icon="Edit" circle
 											           @click="toEditBook(index)"></el-button>
-											<el-button type="danger" icon="el-icon-delete" circle
+											<el-button type="danger" icon="Delete" circle
 											           @click="deleteBook(index)"></el-button>
 										</el-button-group>
 										<img class="myFWZD-image"
@@ -43,16 +45,20 @@
 			</el-card>
 		</el-main>
 	</el-container>
-	</body>
+	</div>
 </template>
 
 <script>
-    import HomePageHeader from "../components/HomePageHeader";
+    import HomePageHeader from "../components/HomePageHeader.vue";
+    import {useAppStore} from "../store";
 
     export default {
         name: "MyFWZD",
         components: {
             HomePageHeader
+        },
+        setup() {
+            return {store: useAppStore()}
         },
         data() {
             return {
@@ -81,7 +87,7 @@
                 this.currentPage = currentPage
             },
             toEditBook(index) {
-                this.$store.dispatch('setBook', this.bookList[index])
+                this.store.setBook(this.bookList[index])
                 this.$router.push('/myBook')
             },
             deleteBook(index) {
@@ -112,7 +118,7 @@
                 })
             },
             moreInfo(index) {
-                this.$store.dispatch('setBook', this.bookList[index])
+                this.store.setBook(this.bookList[index])
                 this.$router.push('/bookInfo')
             }
         }
@@ -121,7 +127,7 @@
 
 <style>
 	.myFWZD-background {
-		background: url("../../public/image/homepage/homepage.jpg") no-repeat center;
+		background: url("../assets/homepage.jpg") no-repeat center;
 		height: 100%;
 		width: 100%;
 		background-size: cover;

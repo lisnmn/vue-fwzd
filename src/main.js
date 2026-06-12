@@ -1,39 +1,52 @@
-import Vue from 'vue'
-import './plugins/axios'
-import './plugins/element.js'
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+
 import App from './App.vue'
 import router from './router'
-import store from './store'
+import { useAppStore } from './store'
+import axiosPlugin, { axios } from './plugins/axios'
 
-Vue.config.productionTip = false
-let base = process.env.NODE_ENV === 'production' ?'http://114.55.107.5:11455':'http://localhost:11455';
+const app = createApp(App)
+const pinia = createPinia()
+
+const base = import.meta.env.PROD ? 'http://114.55.107.5:11455' : 'http://localhost:11455'
 axios.defaults.baseURL = base
-Vue.prototype.baseURL = base
+app.config.globalProperties.baseURL = base
+
+app.use(pinia)
+app.use(router)
+app.use(ElementPlus)
+app.use(axiosPlugin)
+
+// 全局注册所有 Element Plus 图标，模板里可直接用 <el-icon><Search/></el-icon>
+// 或 prefix-icon="Search" / icon="Edit" 这类字符串名引用
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+  app.component(key, component)
+}
 
 router.beforeEach((to, from, next) => {
-    let getFlag = localStorage.getItem('Flag')
+  const store = useAppStore()
+  const getFlag = localStorage.getItem('Flag')
 
-    if (getFlag === 'isLogin') {
-        store.state.isLogin = true
-        next()
+  if (getFlag === 'isLogin') {
+    store.isLogin = true
+    next()
+  } else {
+    if (to.meta.isLogin) {
+      next({
+        path: '/login',
+      })
     } else {
-        if (to.meta.isLogin) {
-            next({
-                path: '/login'
-            })
-        } else {
-            next()
-        }
+      next()
     }
-
+  }
 })
 
-router.afterEach(route => {
-    window.scroll(0, 0)
+router.afterEach(() => {
+  window.scroll(0, 0)
 })
 
-new Vue({
-    router,
-    store,
-    render: h => h(App)
-}).$mount('#app')
+app.mount('#app')

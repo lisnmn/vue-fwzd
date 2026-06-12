@@ -1,5 +1,5 @@
 <template>
-  <body class="login-background">
+  <div class="login-background">
   <el-container>
 	<el-header style="padding: 0">
 	  <LoginHeader></LoginHeader>
@@ -22,13 +22,17 @@
 	  </el-card>
 	</el-main>
   </el-container>
-  </body>
+  </div>
 </template>
 
 <script>
-    import LoginHeader from "../components/LoginHeader";
+    import LoginHeader from "../components/LoginHeader.vue";
+    import {useAppStore} from "../store";
 
     export default {
+        setup() {
+            return {store: useAppStore()}
+        },
         data() {
             return {
                 loginForm: {
@@ -58,7 +62,7 @@
                                         message: '登陆成功！',
                                         type: 'success',
                                     })
-                                    this.$store.dispatch('setUser', true)
+                                    this.store.setUser(true)
                                     localStorage.setItem('Flag', 'isLogin')
                                     localStorage.setItem('username', this.loginForm.name)
                                     this.$router.push('/homepage')
@@ -96,7 +100,7 @@
 
 <style>
   .login-background {
-	background: url("../../public/image/homepage/homepage.jpg") no-repeat center;
+	background: url("../assets/homepage.jpg") no-repeat center;
 	height: 100%;
 	width: 100%;
 	background-size: cover;

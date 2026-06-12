@@ -1,16 +1,13 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Login from "../views/Login";
-import SignUp from "../views/SignUp";
-import HomePage from "../views/HomePage";
-import UploadBook from "../views/UploadBook";
-import BookInfo from "../views/BookInfo";
-import ImageView from "../views/ImageView";
-import UserInfo from "../views/UserInfo";
-import MyFWZD from "../views/MyFWZD";
-import MyBook from "../views/MyBook";
-
-Vue.use(VueRouter)
+import { createRouter, createWebHashHistory } from 'vue-router'
+import Login from '../views/Login.vue'
+import SignUp from '../views/SignUp.vue'
+import HomePage from '../views/HomePage.vue'
+import UploadBook from '../views/UploadBook.vue'
+import BookInfo from '../views/BookInfo.vue'
+import ImageView from '../views/ImageView.vue'
+import UserInfo from '../views/UserInfo.vue'
+import MyFWZD from '../views/MyFWZD.vue'
+import MyBook from '../views/MyBook.vue'
 
 const routes = [
     {
@@ -73,11 +70,9 @@ const routes = [
     }
 ]
 
-const router = new VueRouter({
+const router = createRouter({
     // 测试history但部署请改为hash……
-    //mode: 'history',
-    //base: process.env.BASE_URL,
-    base: '/vue-fwzd/',
+    history: createWebHashHistory('/vue-fwzd/'),
     routes
 })
 

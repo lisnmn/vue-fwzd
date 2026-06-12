@@ -6,18 +6,24 @@
 </template>
 
 <script>
+    import {useAppStore} from './store'
+
     export default {
         name: 'app',
         components: {},
-        created() {
+        setup() {
+            const store = useAppStore()
+
             //在页面加载时读取sessionStorage里的状态信息
             if (sessionStorage.getItem('store')) {
-                this.$store.replaceState(Object.assign({}, this.$store.state, JSON.parse(sessionStorage.getItem("store"))))
+                store.$patch(JSON.parse(sessionStorage.getItem('store')))
             }
 
             window.addEventListener('beforeunload', () => {
-                sessionStorage.setItem('store', JSON.stringify(this.$store.state))
+                sessionStorage.setItem('store', JSON.stringify(store.$state))
             })
+
+            return {store}
         }
     }
 </script>
@@ -26,7 +32,7 @@
     body {
         margin: 0px;
     }
-    
+
     #app {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;

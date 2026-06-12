@@ -11,11 +11,11 @@
             <el-menu-item index="/homepage">FWZD首页</el-menu-item>
             <el-menu-item style="float: right" @click="logout">退出</el-menu-item>
             <el-menu-item index="/uploadBook" style="float: right">上传图片集</el-menu-item>
-            <el-submenu index="username" style="float: right">
-                <template slot="title">{{ username }}</template>
+            <el-sub-menu index="username" style="float: right">
+                <template #title>{{ username }}</template>
                 <el-menu-item index="/userInfo" style="text-align: center">基本资料</el-menu-item>
                 <el-menu-item index="/myFWZD" style="text-align: center">我的FWZD</el-menu-item>
-            </el-submenu>
+            </el-sub-menu>
         </el-menu>
     </div>
 </template>
@@ -25,7 +25,7 @@
         data() {
             return {
                 username: localStorage.getItem('username'),
-                activeIndex: this.$router.currentRoute.path,
+                activeIndex: this.$router.currentRoute.value.path,
             };
         },
         methods: {

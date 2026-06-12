@@ -17,7 +17,7 @@
     export default {
         data() {
             return {
-                activeIndex: this.$router.currentRoute.path,
+                activeIndex: this.$router.currentRoute.value.path,
             };
         },
         methods: {
